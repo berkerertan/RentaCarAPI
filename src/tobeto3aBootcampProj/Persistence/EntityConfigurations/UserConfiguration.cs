@@ -13,6 +13,12 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(u => u.Id).HasColumnName("Id").IsRequired();
         builder.Property(u => u.Email).HasColumnName("Email").IsRequired();
+        builder.Property(u => u.FirstName).HasColumnName("FirstName").IsRequired();
+        builder.Property(u => u.LastName).HasColumnName("LastName").IsRequired();
+        builder.Property(u => u.UserName).HasColumnName("UserName").IsRequired();
+        builder.Property(u => u.NationalIdentity).HasColumnName("NationalIdentity").IsRequired();
+        builder.Property(u => u.DateOfBirth).HasColumnName("DateOfBirth").IsRequired();
+
         builder.Property(u => u.PasswordSalt).HasColumnName("PasswordSalt").IsRequired();
         builder.Property(u => u.PasswordHash).HasColumnName("PasswordHash").IsRequired();
         builder.Property(u => u.AuthenticatorType).HasColumnName("AuthenticatorType").IsRequired();
@@ -22,6 +28,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.HasQueryFilter(u => !u.DeletedDate.HasValue);
 
+        builder.HasMany(x => x.UserImages);
+        builder.HasMany(t => t.UserOperationClaims);
         builder.HasMany(u => u.UserOperationClaims);
         builder.HasMany(u => u.RefreshTokens);
         builder.HasMany(u => u.EmailAuthenticators);
@@ -45,8 +53,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             User adminUser =
                 new()
                 {
+                    FirstName = "Berker",
+                    LastName = "Ertan",
+                    UserName = "berkerertan",
+                    NationalIdentity = "TC12312",
+                    DateOfBirth = DateTime.Now,
                     Id = AdminId,
-                    Email = "narch@kodlama.io",
+                    Email = "berker@ertan.com",
                     PasswordHash = passwordHash,
                     PasswordSalt = passwordSalt
                 };
