@@ -23,6 +23,8 @@ public class BootcampConfiguration : IEntityTypeConfiguration<Bootcamp>
         builder.HasOne(x => x.BootcampState);
         builder.HasMany(x => x.ApplicationInfos);
         builder.HasOne(x => x.Instructor);
+        builder.HasOne(x => x.BootcampImage);
+
 
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
     }

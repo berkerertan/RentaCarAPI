@@ -182,6 +182,42 @@ namespace Persistence.Migrations
                     b.ToTable("Bootcamps", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.BootcampImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<Guid>("BootcampId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("BootcampId");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedDate");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DeletedDate");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ImagePath");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BootcampId")
+                        .IsUnique();
+
+                    b.ToTable("BootcampImages", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.BootcampState", b =>
                 {
                     b.Property<Guid>("Id")
@@ -741,6 +777,42 @@ namespace Persistence.Migrations
                             Id = 77,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "UserImages.Delete"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "BootcampImages.Admin"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "BootcampImages.Read"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "BootcampImages.Write"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "BootcampImages.Create"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "BootcampImages.Update"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "BootcampImages.Delete"
                         });
                 });
 
@@ -914,16 +986,16 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3030e858-6aac-40c6-915c-38c53ea45930"),
+                            Id = new Guid("4077ff72-cac6-4ba1-8b75-9905175fd71f"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfBirth = new DateTime(2024, 3, 25, 2, 48, 31, 891, DateTimeKind.Local).AddTicks(3087),
+                            DateOfBirth = new DateTime(2024, 3, 28, 17, 21, 49, 25, DateTimeKind.Local).AddTicks(8770),
                             Email = "berker@ertan.com",
                             FirstName = "Berker",
                             LastName = "Ertan",
                             NationalIdentity = "TC12312",
-                            PasswordHash = new byte[] { 133, 140, 131, 45, 67, 107, 219, 34, 155, 194, 196, 154, 53, 237, 8, 173, 178, 13, 52, 89, 48, 184, 211, 167, 214, 87, 23, 77, 165, 244, 42, 168, 222, 21, 144, 114, 137, 68, 146, 124, 222, 255, 136, 112, 2, 207, 59, 219, 111, 82, 26, 58, 245, 78, 211, 41, 227, 73, 62, 150, 79, 108, 242, 50 },
-                            PasswordSalt = new byte[] { 132, 82, 206, 46, 226, 185, 227, 33, 112, 52, 161, 26, 250, 94, 191, 254, 83, 194, 241, 253, 170, 135, 215, 142, 160, 73, 111, 191, 160, 94, 207, 154, 160, 210, 54, 72, 244, 73, 224, 62, 235, 14, 243, 11, 82, 242, 32, 194, 101, 192, 48, 251, 186, 100, 209, 167, 150, 155, 248, 117, 241, 231, 36, 218, 180, 56, 6, 38, 234, 4, 27, 184, 154, 233, 82, 61, 26, 121, 34, 227, 248, 62, 12, 202, 111, 14, 8, 148, 79, 250, 54, 14, 21, 145, 119, 180, 116, 9, 155, 117, 193, 29, 222, 33, 47, 131, 232, 160, 229, 128, 187, 162, 207, 242, 87, 254, 71, 183, 234, 0, 228, 26, 250, 33, 28, 193, 91, 166 },
+                            PasswordHash = new byte[] { 221, 99, 192, 90, 229, 244, 181, 230, 62, 142, 76, 101, 53, 113, 231, 139, 220, 135, 150, 12, 160, 249, 148, 150, 21, 163, 7, 118, 43, 200, 127, 114, 175, 191, 249, 106, 52, 246, 114, 220, 23, 224, 58, 74, 133, 212, 69, 178, 105, 187, 248, 58, 239, 149, 62, 15, 233, 72, 225, 50, 97, 251, 216, 108 },
+                            PasswordSalt = new byte[] { 81, 183, 149, 83, 133, 221, 92, 49, 40, 30, 243, 175, 186, 163, 205, 236, 45, 34, 60, 254, 233, 114, 236, 211, 114, 24, 244, 16, 171, 148, 138, 132, 26, 93, 209, 151, 118, 127, 229, 178, 36, 214, 173, 96, 135, 187, 176, 240, 79, 12, 210, 143, 239, 88, 207, 48, 140, 195, 28, 164, 160, 61, 136, 139, 75, 215, 96, 14, 156, 109, 51, 97, 31, 122, 44, 54, 172, 30, 178, 136, 227, 33, 32, 29, 77, 61, 218, 231, 249, 86, 36, 95, 210, 204, 0, 106, 54, 31, 217, 72, 253, 11, 185, 0, 219, 141, 175, 123, 73, 121, 220, 132, 65, 155, 234, 202, 118, 166, 130, 189, 26, 201, 240, 57, 250, 80, 14, 76 },
                             UserName = "berkerertan"
                         });
                 });
@@ -1001,10 +1073,10 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c7250db4-f620-4fb9-b736-b71470783009"),
+                            Id = new Guid("3c15f634-04d2-445d-a5f1-27411d6e0ecc"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("3030e858-6aac-40c6-915c-38c53ea45930")
+                            UserId = new Guid("4077ff72-cac6-4ba1-8b75-9905175fd71f")
                         });
                 });
 
@@ -1101,6 +1173,17 @@ namespace Persistence.Migrations
                     b.Navigation("Instructor");
                 });
 
+            modelBuilder.Entity("Domain.Entities.BootcampImage", b =>
+                {
+                    b.HasOne("Domain.Entities.Bootcamp", "Bootcamp")
+                        .WithOne("BootcampImage")
+                        .HasForeignKey("Domain.Entities.BootcampImage", "BootcampId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Bootcamp");
+                });
+
             modelBuilder.Entity("Domain.Entities.EmailAuthenticator", b =>
                 {
                     b.HasOne("Domain.Entities.User", "User")
@@ -1194,6 +1277,8 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Bootcamp", b =>
                 {
                     b.Navigation("ApplicationInfos");
+
+                    b.Navigation("BootcampImage");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>

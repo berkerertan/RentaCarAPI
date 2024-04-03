@@ -1,6 +1,7 @@
 using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NArchitecture.Core.CrossCuttingConcerns.Exception.WebApi.Extensions;
@@ -107,7 +108,8 @@ const string webApiConfigurationSection = "WebAPIConfiguration";
 WebApiConfiguration webApiConfiguration =
     app.Configuration.GetSection(webApiConfigurationSection).Get<WebApiConfiguration>()
     ?? throw new InvalidOperationException($"\"{webApiConfigurationSection}\" section cannot found in configuration.");
-app.UseCors(opt => opt.WithOrigins(webApiConfiguration.AllowedOrigins).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+//app.UseCors(opt => opt.WithOrigins(webApiConfiguration.AllowedOrigins).AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+app.UseCors(opt => opt.WithOrigins(webApiConfiguration.AllowedOrigins).WithOrigins("http://localhost:4200/", "http://localhost:60805/"));
 
 app.UseResponseLocalization();
 

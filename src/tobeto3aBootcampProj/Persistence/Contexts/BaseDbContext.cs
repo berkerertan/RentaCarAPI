@@ -23,6 +23,7 @@ public class BaseDbContext : DbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Instructor> Instructors { get; set; }
     public DbSet<UserImage> UserImages { get; set; }
+    public DbSet<BootcampImage> BootcampImages { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration)
         : base(dbContextOptions)

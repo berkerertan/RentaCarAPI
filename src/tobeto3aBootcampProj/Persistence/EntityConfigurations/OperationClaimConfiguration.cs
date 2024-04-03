@@ -15,6 +15,7 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Constants;
+using Application.Features.BootcampImages.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -232,6 +233,20 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
 
+        
+        #region BootcampImages
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = BootcampImagesOperationClaims.Admin },
+                new() { Id = ++lastId, Name = BootcampImagesOperationClaims.Read },
+                new() { Id = ++lastId, Name = BootcampImagesOperationClaims.Write },
+                new() { Id = ++lastId, Name = BootcampImagesOperationClaims.Create },
+                new() { Id = ++lastId, Name = BootcampImagesOperationClaims.Update },
+                new() { Id = ++lastId, Name = BootcampImagesOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

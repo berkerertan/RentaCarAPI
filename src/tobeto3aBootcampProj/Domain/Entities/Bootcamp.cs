@@ -41,4 +41,5 @@ public class Bootcamp : Entity<Guid>
     public virtual BootcampState? BootcampState { get; set; }
     public virtual ICollection<ApplicationInfo>? ApplicationInfos { get; set; }
     public virtual Instructor? Instructor { get; set; }
+    public virtual BootcampImage? BootcampImage { get; set; }
 }

@@ -19,8 +19,8 @@ public class CreateInstructorCommand
         ILoggableRequest,
         ITransactionalRequest
 {
-    public string CompanyName { get; set; }
 
+    public string CompanyName { get; set; }
     public string[] Roles => [Admin, Write, InstructorsOperationClaims.Create];
 
     public bool BypassCache { get; }
