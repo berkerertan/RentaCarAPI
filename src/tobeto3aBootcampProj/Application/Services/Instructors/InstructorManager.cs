@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using Application.Features.Instructors.Rules;
 using Application.Services.Repositories;
+using AutoMapper;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Query;
 using NArchitecture.Core.Persistence.Paging;

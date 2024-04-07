@@ -3,6 +3,7 @@ using Application.Features.Instructors.Commands.Delete;
 using Application.Features.Instructors.Commands.Update;
 using Application.Features.Instructors.Queries.GetById;
 using Application.Features.Instructors.Queries.GetList;
+using Application.Services.Instructors;
 using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
@@ -51,4 +52,16 @@ public class InstructorsController : BaseController
         GetListResponse<GetListInstructorListItemDto> response = await Mediator.Send(getListInstructorQuery);
         return Ok(response);
     }
+
+    [HttpGet("GetListAll")]
+    public async Task<IActionResult> GetListAll()
+    {
+        PageRequest pageRequest = new();
+        pageRequest.PageSize = 20;
+        pageRequest.PageIndex = 0;
+        GetListInstructorQuery getListInstructorQuery = new() { PageRequest = pageRequest };
+        GetListResponse<GetListInstructorListItemDto> response = await Mediator.Send(getListInstructorQuery);
+        return Ok(response);
+    }
+
 }
