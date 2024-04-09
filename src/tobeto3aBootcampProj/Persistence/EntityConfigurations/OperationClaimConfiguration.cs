@@ -3,6 +3,7 @@ using Application.Features.ApplicationInfoes.Constants;
 using Application.Features.ApplicationStates.Constants;
 using Application.Features.Auth.Constants;
 using Application.Features.Blacklists.Constants;
+using Application.Features.BootcampImages.Constants;
 using Application.Features.Bootcamps.Constants;
 using Application.Features.BootcampStates.Constants;
 using Application.Features.Employees.Constants;
@@ -15,7 +16,6 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Constants;
-using Application.Features.BootcampImages.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -233,7 +233,7 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
 
-        
+
         #region BootcampImages
         featureOperationClaims.AddRange(
             [
@@ -246,7 +246,7 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
             ]
         );
         #endregion
-        
+
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

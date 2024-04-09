@@ -9,7 +9,7 @@ using static Application.Features.BootcampStates.Constants.BootcampStatesOperati
 
 namespace Application.Features.BootcampStates.Queries.GetById;
 
-public class GetByIdBootcampStateQuery : IRequest<GetByIdBootcampStateResponse>//, ISecuredRequest
+public class GetByIdBootcampStateQuery : IRequest<GetByIdBootcampStateResponse> //, ISecuredRequest
 {
     public Guid Id { get; set; }
 

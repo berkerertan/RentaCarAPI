@@ -1,4 +1,9 @@
-﻿using Application.Features.Auth.Rules;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Application.Features.Auth.Rules;
 using Application.Services.Applicants;
 using Application.Services.AuthService;
 using Application.Services.Employees;
@@ -9,13 +14,9 @@ using MediatR;
 using NArchitecture.Core.Application.Dtos;
 using NArchitecture.Core.Security.Hashing;
 using NArchitecture.Core.Security.JWT;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auth.Commands.Register;
+
 public class ApplicantRegisterCommand : IRequest<RegisteredResponse>
 {
     public ApplicantForRegisterDto ApplicantForRegisterDto { get; set; }
@@ -27,7 +28,7 @@ public class ApplicantRegisterCommand : IRequest<RegisteredResponse>
         IpAddress = string.Empty;
     }
 
-    public ApplicantRegisterCommand( ApplicantForRegisterDto applicantForRegisterDto,string ipAddress)
+    public ApplicantRegisterCommand(ApplicantForRegisterDto applicantForRegisterDto, string ipAddress)
     {
         ApplicantForRegisterDto = applicantForRegisterDto;
         IpAddress = ipAddress;
@@ -85,6 +86,5 @@ public class ApplicantRegisterCommand : IRequest<RegisteredResponse>
             RegisteredResponse registeredResponse = new() { AccessToken = createdAccessToken, RefreshToken = addedRefreshToken };
             return registeredResponse;
         }
-
     }
 }

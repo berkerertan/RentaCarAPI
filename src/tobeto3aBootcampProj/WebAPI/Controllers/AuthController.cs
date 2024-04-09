@@ -51,7 +51,8 @@ public class AuthController : BaseController
     [HttpPost("RegisterEmployee")]
     public async Task<IActionResult> RegisterForEmployee([FromBody] EmployeeForRegisterDto employeeForRegisterDto)
     {
-        EmployeeRegisterCommand registerCommand = new() { EmployeeForRegisterDto = employeeForRegisterDto, IpAddress = getIpAddress() };
+        EmployeeRegisterCommand registerCommand =
+            new() { EmployeeForRegisterDto = employeeForRegisterDto, IpAddress = getIpAddress() };
         RegisteredResponse result = await Mediator.Send(registerCommand);
         setRefreshTokenToCookie(result.RefreshToken);
         return Created(uri: "", result.AccessToken);
@@ -60,7 +61,8 @@ public class AuthController : BaseController
     [HttpPost("RegisterInstructor")]
     public async Task<IActionResult> RegisterForInstructor([FromBody] InstructorForRegisterDto instructorForRegisterDto)
     {
-        InstructorRegisterCommand registerCommand = new() { InstructorForRegisterDto = instructorForRegisterDto, IpAddress = getIpAddress() };
+        InstructorRegisterCommand registerCommand =
+            new() { InstructorForRegisterDto = instructorForRegisterDto, IpAddress = getIpAddress() };
         RegisteredResponse result = await Mediator.Send(registerCommand);
         setRefreshTokenToCookie(result.RefreshToken);
         return Created(uri: "", result.AccessToken);
@@ -69,7 +71,8 @@ public class AuthController : BaseController
     [HttpPost("RegisterApplicant")]
     public async Task<IActionResult> RegisterForApplicant([FromBody] ApplicantForRegisterDto applicantForRegisterDto)
     {
-        ApplicantRegisterCommand registerCommand = new() { ApplicantForRegisterDto = applicantForRegisterDto, IpAddress = getIpAddress() };
+        ApplicantRegisterCommand registerCommand =
+            new() { ApplicantForRegisterDto = applicantForRegisterDto, IpAddress = getIpAddress() };
         RegisteredResponse result = await Mediator.Send(registerCommand);
         setRefreshTokenToCookie(result.RefreshToken);
         return Created(uri: "", result.AccessToken);

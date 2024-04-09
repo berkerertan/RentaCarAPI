@@ -1,12 +1,12 @@
-using Application.Features.BootcampImages.Rules;
-using Application.Services.Repositories;
-using NArchitecture.Core.Persistence.Paging;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
-using Application.Services.ImageService;
-using Microsoft.AspNetCore.Http;
 using Application.Features.BootcampImages.Commands.Create;
+using Application.Features.BootcampImages.Rules;
+using Application.Services.ImageService;
+using Application.Services.Repositories;
+using Domain.Entities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Query;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Services.BootcampImages;
 
@@ -16,7 +16,11 @@ public class BootcampImageManager : IBootcampImageService
     private readonly BootcampImageBusinessRules _bootcampImageBusinessRules;
     private readonly ImageServiceBase _imageService;
 
-    public BootcampImageManager(IBootcampImageRepository bootcampImageRepository, BootcampImageBusinessRules bootcampImageBusinessRules, ImageServiceBase imageService)
+    public BootcampImageManager(
+        IBootcampImageRepository bootcampImageRepository,
+        BootcampImageBusinessRules bootcampImageBusinessRules,
+        ImageServiceBase imageService
+    )
     {
         _bootcampImageRepository = bootcampImageRepository;
         _bootcampImageBusinessRules = bootcampImageBusinessRules;
@@ -31,7 +35,13 @@ public class BootcampImageManager : IBootcampImageService
         CancellationToken cancellationToken = default
     )
     {
-        BootcampImage? bootcampImage = await _bootcampImageRepository.GetAsync(predicate, include, withDeleted, enableTracking, cancellationToken);
+        BootcampImage? bootcampImage = await _bootcampImageRepository.GetAsync(
+            predicate,
+            include,
+            withDeleted,
+            enableTracking,
+            cancellationToken
+        );
         return bootcampImage;
     }
 
@@ -59,18 +69,13 @@ public class BootcampImageManager : IBootcampImageService
         return bootcampImageList;
     }
 
-    public async Task<BootcampImage> AddAsync(IFormFile file,CreateBootcampImageCommand command)
+    public async Task<BootcampImage> AddAsync(IFormFile file, CreateBootcampImageCommand command)
     {
         //BootcampImage addedBootcampImage = await _bootcampImageRepository.AddAsync(bootcampImage);
         //return addedBootcampImage;
-        BootcampImage bootcampImage = new BootcampImage()
-        {
-            BootcampId= command.BootcampId,
-            ImagePath= command.ImagePath
-        };
+        BootcampImage bootcampImage = new BootcampImage() { BootcampId = command.BootcampId, ImagePath = command.ImagePath };
         bootcampImage.ImagePath = await _imageService.UploadAsync(file);
         return await _bootcampImageRepository.AddAsync(bootcampImage);
-
     }
 
     public async Task<BootcampImage> UpdateAsync(BootcampImage bootcampImage)

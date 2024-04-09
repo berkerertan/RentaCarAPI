@@ -19,7 +19,6 @@ public class CreateApplicantCommand
         ILoggableRequest,
         ITransactionalRequest
 {
-
     public string About { get; set; }
 
     public string[] Roles => [Admin, Write, ApplicantsOperationClaims.Create];

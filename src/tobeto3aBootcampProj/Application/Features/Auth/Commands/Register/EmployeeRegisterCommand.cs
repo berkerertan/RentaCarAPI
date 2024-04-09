@@ -1,4 +1,9 @@
-﻿using Application.Features.Auth.Rules;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Application.Features.Auth.Rules;
 using Application.Services.Applicants;
 using Application.Services.AuthService;
 using Application.Services.Employees;
@@ -7,13 +12,9 @@ using Domain.Entities;
 using MediatR;
 using NArchitecture.Core.Security.Hashing;
 using NArchitecture.Core.Security.JWT;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auth.Commands.Register;
+
 public class EmployeeRegisterCommand : IRequest<RegisteredResponse>
 {
     public EmployeeForRegisterDto EmployeeForRegisterDto { get; set; }

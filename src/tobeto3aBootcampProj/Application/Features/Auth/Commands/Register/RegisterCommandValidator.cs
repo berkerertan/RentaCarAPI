@@ -16,6 +16,7 @@ public class RegisterCommandValidatorEmployee : AbstractValidator<EmployeeRegist
                 "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character."
             );
     }
+
     private bool StrongPassword(string value)
     {
         Regex strongPasswordRegex = new("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled);
@@ -23,6 +24,7 @@ public class RegisterCommandValidatorEmployee : AbstractValidator<EmployeeRegist
         return strongPasswordRegex.IsMatch(value);
     }
 }
+
 public class RegisterCommandValidatorInstructor : AbstractValidator<InstructorRegisterCommand>
 {
     public RegisterCommandValidatorInstructor()
@@ -36,6 +38,7 @@ public class RegisterCommandValidatorInstructor : AbstractValidator<InstructorRe
                 "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character."
             );
     }
+
     private bool StrongPassword(string value)
     {
         Regex strongPasswordRegex = new("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled);
@@ -43,6 +46,7 @@ public class RegisterCommandValidatorInstructor : AbstractValidator<InstructorRe
         return strongPasswordRegex.IsMatch(value);
     }
 }
+
 public class RegisterCommandValidatorApplicant : AbstractValidator<ApplicantRegisterCommand>
 {
     public RegisterCommandValidatorApplicant()
@@ -56,6 +60,7 @@ public class RegisterCommandValidatorApplicant : AbstractValidator<ApplicantRegi
                 "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character."
             );
     }
+
     private bool StrongPassword(string value)
     {
         Regex strongPasswordRegex = new("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled);

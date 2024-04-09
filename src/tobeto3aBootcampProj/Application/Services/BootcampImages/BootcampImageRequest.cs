@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Services.BootcampImages;
+
 public class BootcampImageRequest
 {
     public Guid BootcampId { get; set; }

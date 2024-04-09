@@ -19,7 +19,6 @@ public class BootcampImageConfiguration : IEntityTypeConfiguration<BootcampImage
 
         builder.HasOne(x => x.Bootcamp);
 
-
         builder.HasQueryFilter(bi => !bi.DeletedDate.HasValue);
     }
 }

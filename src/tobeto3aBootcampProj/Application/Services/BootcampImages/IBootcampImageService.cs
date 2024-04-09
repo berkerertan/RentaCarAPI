@@ -1,9 +1,9 @@
-using NArchitecture.Core.Persistence.Paging;
-using Domain.Entities;
-using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
-using Microsoft.AspNetCore.Http;
 using Application.Features.BootcampImages.Commands.Create;
+using Domain.Entities;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Query;
+using NArchitecture.Core.Persistence.Paging;
 
 namespace Application.Services.BootcampImages;
 

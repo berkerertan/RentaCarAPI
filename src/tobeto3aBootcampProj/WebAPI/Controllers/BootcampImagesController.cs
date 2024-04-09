@@ -3,10 +3,10 @@ using Application.Features.BootcampImages.Commands.Delete;
 using Application.Features.BootcampImages.Commands.Update;
 using Application.Features.BootcampImages.Queries.GetById;
 using Application.Features.BootcampImages.Queries.GetList;
+using Application.Services.BootcampImages;
+using Microsoft.AspNetCore.Mvc;
 using NArchitecture.Core.Application.Requests;
 using NArchitecture.Core.Application.Responses;
-using Microsoft.AspNetCore.Mvc;
-using Application.Services.BootcampImages;
 
 namespace WebAPI.Controllers;
 
@@ -21,9 +21,8 @@ public class BootcampImagesController : BaseController
         _bootcampImageService = bootcampImageService;
     }
 
-
     [HttpPost]
-    public async Task<IActionResult> Add(IFormFile file,[FromBody] CreateBootcampImageCommand createBootcampImageCommand)
+    public async Task<IActionResult> Add(IFormFile file, [FromBody] CreateBootcampImageCommand createBootcampImageCommand)
     {
         //CreatedBootcampImageResponse response = await Mediator.Send(createBootcampImageCommand);
         //return Created(uri: "", response);
